@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="slate_200">#81A9B3</color>
+    <color name="slate_600">#4A6572</color>
+    <color name="slate_700">#344955</color>
+    <color name="slate_800">#232F34</color>
+
+    <color name="slate_darkest">#16191A</color>
+
+    <color name="mtrl_orange_500">#ff9800</color>
+    <color name="mtrl_orange_700">#f57c00</color>
+
+    <color name="system_ui_scrim_light">#B3FFFFFF</color>
+    <color name="system_ui_scrim_dark">#30000000</color>
+</resources>

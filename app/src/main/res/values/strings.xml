@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">NASA APOD</string>
+    <string name="title_listAstronomyPicture">Astronomy pictures</string>
+</resources>
