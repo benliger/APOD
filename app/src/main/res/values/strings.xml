@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">NASA APOD</string>
     <string name="title_listAstronomyPicture">Astronomy pictures</string>
+
+    <string name="retry">Retry</string>
+    <string name="error_fetching_data">Oops 😔 something wrong happened!</string>
+    <string name="astronomy_picture_cd">astronomy picture</string>
 </resources>

@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.benliger.nasaapod.R
+import com.benliger.nasaapod.databinding.ListAstronomyPictureFragmentBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import kotlin.properties.Delegates
 
 class ListAstronomyPictureFragment : Fragment() {
 
@@ -14,18 +15,29 @@ class ListAstronomyPictureFragment : Fragment() {
         fun newInstance() = ListAstronomyPictureFragment()
     }
 
-    private lateinit var viewModel: ListAstronomyPictureViewModel
+    private val viewModel: ListAstronomyPictureViewModel by viewModel()
+    private var viewHolder by Delegates.notNull<ListAstronomyPictureViewHolder>()
+
+    private var _binding: ListAstronomyPictureFragmentBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.list_astronomy_picture_fragment, container, false)
+        _binding = ListAstronomyPictureFragmentBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ListAstronomyPictureViewModel::class.java)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewHolder = ListAstronomyPictureViewHolder(binding, viewModel)
+    }
+
+    override fun onDestroyView() {
+        viewHolder.release()
+        _binding = null
+        super.onDestroyView()
     }
 
 }
