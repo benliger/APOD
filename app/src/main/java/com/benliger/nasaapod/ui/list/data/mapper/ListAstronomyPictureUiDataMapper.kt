@@ -16,7 +16,12 @@ class ListAstronomyPictureUiDataMapper {
 
         return ListAstronomyPictureUiData(
             pictureListApod.map {
-                PictureItem(id = mapDateToLong(it.date), picture = it.url, name = it.title)
+                PictureItem(
+                    id = mapDateToLong(it.date),
+                    date = it.date,
+                    picture = it.url,
+                    name = it.title
+                )
             }
         )
     }

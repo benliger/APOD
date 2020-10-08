@@ -6,10 +6,16 @@ import com.benliger.nasaapod.databinding.AstronomyPictureRecyclerViewHolderBindi
 import com.benliger.nasaapod.ui.list.data.PictureItem
 import com.benliger.nasaapod.util.loadImage
 
-class PictureRecyclerViewHolder(private val binding: AstronomyPictureRecyclerViewHolderBinding) :
+class PictureRecyclerViewHolder(
+    private val binding: AstronomyPictureRecyclerViewHolderBinding,
+    private val pictureClickAction: (String) -> Unit,
+) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: PictureItem) {
+        binding.root.setOnClickListener {
+            pictureClickAction(item.date)
+        }
         binding.picture.loadImage(item.picture, R.drawable.ic_twotone_scatter_plot)
         binding.label.text = item.name
     }

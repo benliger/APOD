@@ -36,7 +36,14 @@ class ListAstronomyPictureUiDataMapperTest {
     fun mapToUiData_apodImage_PictureItem() {
         // GIVEN
         val listApod =
-            listOf(Apod(mediaType = ListAstronomyPictureUiDataMapper.APOD_IMAGE_MEDIA_TYPE))
+            listOf(
+                Apod(
+                    mediaType = ListAstronomyPictureUiDataMapper.APOD_IMAGE_MEDIA_TYPE,
+                    date = "2020-10-08",
+                    title = "title",
+                    url = "https://some.website.com"
+                )
+            )
         // WHEN
         val result = mapper.mapToUiData(listApod)
         //THEN
@@ -46,6 +53,7 @@ class ListAstronomyPictureUiDataMapperTest {
             this[0].apply {
                 this.shouldBeInstanceOf(PictureItem::class.java)
                 val item = this as PictureItem
+                item.date.shouldBeEqualTo(listApod[0].date)
                 item.name.shouldBeEqualTo(listApod[0].title)
                 item.picture.shouldBeEqualTo(listApod[0].url)
             }

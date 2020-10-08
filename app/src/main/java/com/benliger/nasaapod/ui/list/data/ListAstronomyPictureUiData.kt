@@ -17,7 +17,7 @@ object LoadingItem : AstronomyPictureRecyclerItem() {
     override fun getUniqueId() = -1L
 }
 
-data class PictureItem(val id: Long, val picture: String, val name: String) :
+data class PictureItem(val id: Long, val date: String, val picture: String, val name: String) :
     AstronomyPictureRecyclerItem() {
     override fun isSameItem(other: RecyclerItem) = other is PictureItem && other.id == id
     override fun isSameContent(other: RecyclerItem) = other is PictureItem && other == this

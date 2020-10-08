@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.benliger.nasaapod.databinding.ListAstronomyPictureFragmentBinding
+import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.properties.Delegates
 
@@ -31,7 +32,9 @@ class ListAstronomyPictureFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewHolder = ListAstronomyPictureViewHolder(binding, viewModel)
+        viewHolder = ListAstronomyPictureViewHolder(binding, viewModel) { date ->
+            Snackbar.make(binding.root, "TODO", Snackbar.LENGTH_SHORT).show()
+        }
     }
 
     override fun onDestroyView() {

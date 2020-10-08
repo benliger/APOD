@@ -14,7 +14,7 @@ import com.benliger.nasaapod.ui.list.viewholder.LoadingRecyclerViewHolder
 import com.benliger.nasaapod.ui.list.viewholder.PictureRecyclerViewHolder
 import timber.log.Timber
 
-class AstronomyPictureAdapter :
+class AstronomyPictureAdapter(private val pictureClickAction: (String) -> Unit) :
     ListAdapter<AstronomyPictureRecyclerItem, RecyclerView.ViewHolder>(diffCallback) {
 
     init {
@@ -35,7 +35,7 @@ class AstronomyPictureAdapter :
                         LayoutInflater.from(parent.context),
                         parent,
                         false
-                    )
+                    ), pictureClickAction
                 )
             }
             else -> {

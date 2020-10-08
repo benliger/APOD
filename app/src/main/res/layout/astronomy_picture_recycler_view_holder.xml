@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:showIn="@layout/list_astronomy_picture_fragment"
     android:padding="@dimen/padding_default"
+    android:foreground="?attr/selectableItemBackground"
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
