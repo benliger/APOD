@@ -23,7 +23,7 @@ android {
             buildConfigField("String", "NASA_API_KEY", "\"${nasaApiKey}\"")
         }
         release {
-            buildConfigField("String", "NASA_API_KEY", "${nasaApiKey}")
+            buildConfigField("String", "NASA_API_KEY", "\"${nasaApiKey}\"")
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
