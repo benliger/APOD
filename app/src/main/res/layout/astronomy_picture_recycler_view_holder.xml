@@ -11,12 +11,12 @@
     <ImageView
         android:id="@+id/picture"
         android:layout_width="0dp"
-        android:layout_height="256dp"
+        android:layout_height="@dimen/picture_list_height"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:scaleType="centerCrop"
-        tools:src="@drawable/ic_twotone_scatter_plot"
+        tools:src="@tools:sample/backgrounds/scenic"
         android:contentDescription="@string/astronomy_picture_cd"
         app:layout_constraintEnd_toEndOf="parent" />
 

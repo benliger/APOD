@@ -7,6 +7,7 @@ import com.benliger.nasaapod.service.manager.ApodManager
 import com.benliger.nasaapod.service.manager.ApodManagerImpl
 import com.benliger.nasaapod.service.repository.ApodRepository
 import com.benliger.nasaapod.service.repository.ApodRepositoryImpl
+import com.benliger.nasaapod.ui.detail.DetailAstronomyPictureViewModel
 import com.benliger.nasaapod.ui.list.ListAstronomyPictureViewModel
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -54,7 +55,11 @@ object ApodModule {
                 gson
             )
         }
+
         viewModel { ListAstronomyPictureViewModel(androidApplication(), get()) }
+        viewModel { (date: String) ->
+            DetailAstronomyPictureViewModel(androidApplication(), get(), date)
+        }
     }
 
 }

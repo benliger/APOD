@@ -5,16 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.benliger.nasaapod.databinding.ListAstronomyPictureFragmentBinding
-import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.properties.Delegates
 
 class ListAstronomyPictureFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = ListAstronomyPictureFragment()
-    }
 
     private val viewModel: ListAstronomyPictureViewModel by viewModel()
     private var viewHolder by Delegates.notNull<ListAstronomyPictureViewHolder>()
@@ -32,8 +28,10 @@ class ListAstronomyPictureFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewHolder = ListAstronomyPictureViewHolder(binding, viewModel) { date ->
-            Snackbar.make(binding.root, "TODO", Snackbar.LENGTH_SHORT).show()
+        viewHolder = ListAstronomyPictureViewHolder(binding, viewModel) { date, title ->
+            val directions = ListAstronomyPictureFragmentDirections
+                .actionListAstronomyPictureFragmentToDetailAstronomyPictureFragment(date, title)
+            findNavController().navigate(directions)
         }
     }
 

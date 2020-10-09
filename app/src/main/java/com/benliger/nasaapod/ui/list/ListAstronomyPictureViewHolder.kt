@@ -13,7 +13,7 @@ import io.reactivex.schedulers.Schedulers
 class ListAstronomyPictureViewHolder(
     private val binding: ListAstronomyPictureFragmentBinding,
     private val viewModel: ListAstronomyPictureViewModel,
-    pictureClickAction: (String) -> Unit,
+    pictureClickAction: (date: String, title: String) -> Unit,
 ) {
 
     private val compositeDisposable = CompositeDisposable()
