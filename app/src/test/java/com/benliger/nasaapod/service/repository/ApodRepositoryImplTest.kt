@@ -4,6 +4,8 @@ import com.benliger.nasaapod.BuildConfig
 import com.benliger.nasaapod.service.api.NasaApodApiClient
 import com.benliger.nasaapod.service.model.Apod
 import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.verify
+import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
 import com.nhaarman.mockitokotlin2.whenever
 import io.reactivex.Single
 import org.joda.time.LocalDate
@@ -24,10 +26,11 @@ class ApodRepositoryImplTest {
         val localDate = LocalDate.parse(date)
         val highDefinition = false
         val apod = Apod(date = date)
+        val key = BuildConfig.NASA_API_KEY
 
         whenever(
             apiClient.getApod(
-                key = BuildConfig.NASA_API_KEY,
+                key = key,
                 date = date,
                 hdImage = highDefinition
             )
@@ -38,5 +41,8 @@ class ApodRepositoryImplTest {
         repository.getApod(localDate, highDefinition)
             .test()
             .assertResult(apod)
+
+        verify(apiClient).getApod(key, date, highDefinition)
+        verifyNoMoreInteractions(apiClient)
     }
 }

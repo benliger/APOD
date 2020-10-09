@@ -1,6 +1,7 @@
 package com.benliger.nasaapod.service.di
 
 import com.benliger.nasaapod.BuildConfig
+import com.benliger.nasaapod.service.api.NasaApodApi
 import com.benliger.nasaapod.service.api.NasaApodApiClient
 import com.benliger.nasaapod.service.api.NasaApodApiClientImpl
 import com.benliger.nasaapod.service.manager.ApodManager
@@ -18,6 +19,9 @@ import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object ApodModule {
@@ -45,15 +49,18 @@ object ApodModule {
             })
             .build()
 
+    private val retrofit: Retrofit = Retrofit.Builder()
+        .baseUrl(BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create(gson))
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .client(client)
+        .build()
+
     val apodServiceModule: Module = module {
         single<ApodManager> { ApodManagerImpl(get()) }
         single<ApodRepository> { ApodRepositoryImpl(get()) }
         single<NasaApodApiClient> {
-            NasaApodApiClientImpl(
-                BASE_URL,
-                client,
-                gson
-            )
+            NasaApodApiClientImpl(retrofit.create(NasaApodApi::class.java))
         }
 
         viewModel { ListAstronomyPictureViewModel(androidApplication(), get()) }

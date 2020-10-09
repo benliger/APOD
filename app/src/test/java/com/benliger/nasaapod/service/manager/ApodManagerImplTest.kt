@@ -3,6 +3,8 @@ package com.benliger.nasaapod.service.manager
 import com.benliger.nasaapod.service.model.Apod
 import com.benliger.nasaapod.service.repository.ApodRepository
 import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.verify
+import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
 import com.nhaarman.mockitokotlin2.whenever
 import io.reactivex.Single
 import org.joda.time.LocalDate
@@ -30,6 +32,9 @@ class ApodManagerImplTest {
             .test()
             .assertNoErrors()
             .assertResult(apod)
+
+        verify(repository).getApod(localDate, highDefinition)
+        verifyNoMoreInteractions(repository)
     }
 
     @Test
@@ -38,6 +43,8 @@ class ApodManagerImplTest {
             .test()
             .assertNoErrors()
             .assertResult(emptyList())
+
+        verifyNoMoreInteractions(repository)
     }
 
     @Test
@@ -46,6 +53,8 @@ class ApodManagerImplTest {
             .test()
             .assertNoErrors()
             .assertResult(emptyList())
+
+        verifyNoMoreInteractions(repository)
     }
 
     @Test
@@ -64,5 +73,9 @@ class ApodManagerImplTest {
             .test()
             .assertNoErrors()
             .assertResult(listOf(apod1, apod2))
+
+        verify(repository).getApod(startDate, highDefinition)
+        verify(repository).getApod(startDate.minusDays(1), highDefinition)
+        verifyNoMoreInteractions(repository)
     }
 }
