@@ -1,6 +1,6 @@
 package com.benliger.nasaapod.ui.list.data
 
-import com.benliger.nasaapod.util.RecyclerItem
+import com.benliger.nasaapod.ui.common.RecyclerItem
 
 data class ListAstronomyPictureUiData(val uiRecyclerItem: List<AstronomyPictureRecyclerItem> = emptyList())
 

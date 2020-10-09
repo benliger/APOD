@@ -1,7 +1,8 @@
-package com.benliger.nasaapod
+package com.benliger.nasaapod.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.benliger.nasaapod.R
 
 class MainActivity : AppCompatActivity() {
 

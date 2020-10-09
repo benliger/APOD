@@ -1,4 +1,4 @@
-package com.benliger.nasaapod.util
+package com.benliger.nasaapod.ui.common
 
 /**
  * Base class for Any RecyclerView Data.

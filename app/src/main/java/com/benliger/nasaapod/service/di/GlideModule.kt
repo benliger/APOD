@@ -1,4 +1,4 @@
-package com.benliger.nasaapod.util
+package com.benliger.nasaapod.service.di
 
 import android.content.Context
 import com.benliger.nasaapod.R

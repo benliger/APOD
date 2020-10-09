@@ -4,8 +4,8 @@ import androidx.core.view.isVisible
 import com.benliger.nasaapod.R
 import com.benliger.nasaapod.databinding.DetailAstronomyPictureFragmentBinding
 import com.benliger.nasaapod.service.model.Apod
-import com.benliger.nasaapod.util.ScreenUiData
-import com.benliger.nasaapod.util.State
+import com.benliger.nasaapod.ui.common.ScreenUiData
+import com.benliger.nasaapod.ui.common.State
 import com.benliger.nasaapod.util.loadImage
 import com.google.android.material.snackbar.Snackbar
 import io.reactivex.android.schedulers.AndroidSchedulers

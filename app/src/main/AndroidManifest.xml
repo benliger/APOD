@@ -14,7 +14,7 @@
         android:name=".ApodApplication"
         android:theme="@style/Theme.Apod">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:launchMode="singleTask"
             android:theme="@style/Theme.Apod.Home">
             <intent-filter>

@@ -1,4 +1,4 @@
-package com.benliger.nasaapod.util
+package com.benliger.nasaapod.ui.common
 
 data class ScreenUiData<T>(val state: State = State.IDLE, val data: T, val error: String? = null)
 

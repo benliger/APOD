@@ -4,11 +4,11 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import com.benliger.nasaapod.R
 import com.benliger.nasaapod.service.manager.ApodManager
+import com.benliger.nasaapod.ui.common.ScreenUiData
+import com.benliger.nasaapod.ui.common.State
 import com.benliger.nasaapod.ui.list.data.ListAstronomyPictureUiData
 import com.benliger.nasaapod.ui.list.data.LoadingItem
 import com.benliger.nasaapod.ui.list.data.mapper.ListAstronomyPictureUiDataMapper
-import com.benliger.nasaapod.util.ScreenUiData
-import com.benliger.nasaapod.util.State
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.processors.BehaviorProcessor
 import io.reactivex.schedulers.Schedulers

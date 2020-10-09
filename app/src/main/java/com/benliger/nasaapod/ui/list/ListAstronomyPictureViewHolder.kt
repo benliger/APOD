@@ -2,9 +2,9 @@ package com.benliger.nasaapod.ui.list
 
 import com.benliger.nasaapod.R
 import com.benliger.nasaapod.databinding.ListAstronomyPictureFragmentBinding
+import com.benliger.nasaapod.ui.common.ScreenUiData
+import com.benliger.nasaapod.ui.common.State
 import com.benliger.nasaapod.ui.list.data.ListAstronomyPictureUiData
-import com.benliger.nasaapod.util.ScreenUiData
-import com.benliger.nasaapod.util.State
 import com.google.android.material.snackbar.Snackbar
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
