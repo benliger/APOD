@@ -16,6 +16,7 @@ import timber.log.Timber
 class DetailAstronomyPictureViewHolder(
     private val binding: DetailAstronomyPictureFragmentBinding,
     private val viewModel: DetailAstronomyPictureViewModel,
+    private val pictureClickAction: (pictureUrl: String, pictureUrlHd: String) -> Unit,
 ) {
 
     private val compositeDisposable = CompositeDisposable()
@@ -41,6 +42,14 @@ class DetailAstronomyPictureViewHolder(
                 binding.description.text = screenUiData.data.explanation
                 binding.copyright.text = screenUiData.data.copyright
                 binding.picture.loadImage(screenUiData.data.url, R.drawable.ic_twotone_scatter_plot)
+                binding.picture.setOnClickListener {
+                    val pictureUrlHd = if (!screenUiData.data.hdUrl.isBlank()) {
+                        screenUiData.data.hdUrl
+                    } else {
+                        screenUiData.data.url
+                    }
+                    pictureClickAction(screenUiData.data.url, pictureUrlHd)
+                }
             }
             State.ERROR -> {
                 binding.progress.isVisible = false

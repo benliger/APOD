@@ -68,6 +68,8 @@ dependencies {
     implementation 'com.github.bumptech.glide:okhttp3-integration:4.11.0'
     kapt 'com.github.bumptech.glide:compiler:4.11.0'
 
+    implementation 'com.github.MikeOrtiz:TouchImageView:3.0.1'
+
     testImplementation 'junit:junit:4.13'
     testImplementation 'org.amshove.kluent:kluent:1.60'
     testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0'

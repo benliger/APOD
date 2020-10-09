@@ -18,7 +18,7 @@ class DetailAstronomyPictureFragment : Fragment() {
 
     private val args by navArgs<DetailAstronomyPictureFragmentArgs>()
     private val viewModel: DetailAstronomyPictureViewModel by viewModel() {
-        parametersOf(args.apodDate)
+        parametersOf(args.date)
     }
     private var viewHolder by Delegates.notNull<DetailAstronomyPictureViewHolder>()
 
@@ -35,14 +35,22 @@ class DetailAstronomyPictureFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewHolder = DetailAstronomyPictureViewHolder(binding, viewModel)
+        viewHolder =
+            DetailAstronomyPictureViewHolder(binding, viewModel) { pictureUrl, pictureUrlHd ->
+                val directions = DetailAstronomyPictureFragmentDirections
+                    .actionDetailAstronomyPictureFragmentToAstronomyPictureFragment(
+                        pictureUrl,
+                        pictureUrlHd
+                    )
+                findNavController().navigate(directions)
+            }
         initializeToolbar()
     }
 
     private fun initializeToolbar() {
         val activity = requireActivity() as AppCompatActivity
         activity.setSupportActionBar(toolbar)
-        toolbar.title = args.apodTitle
+        toolbar.title = args.title
         toolbar.setNavigationOnClickListener { findNavController().popBackStack() }
         activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }

@@ -20,10 +20,25 @@
         android:label="Detail Astronomy Picture"
         tools:layout="@layout/detail_astronomy_picture_fragment">
         <argument
-            android:name="apod_date"
+            android:name="date"
             app:argType="string" />
         <argument
-            android:name="apod_title"
+            android:name="title"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_detailAstronomyPictureFragment_to_astronomyPictureFragment"
+            app:destination="@id/astronomyPictureFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/astronomyPictureFragment"
+        android:name="com.benliger.nasaapod.ui.picture.AstronomyPictureFragment"
+        android:label="Astronomy Picture"
+        tools:layout="@layout/astronomy_picture_fragment">
+        <argument
+            android:name="pictureUrl"
+            app:argType="string" />
+        <argument
+            android:name="pictureUrlHd"
             app:argType="string" />
     </fragment>
 </navigation>
