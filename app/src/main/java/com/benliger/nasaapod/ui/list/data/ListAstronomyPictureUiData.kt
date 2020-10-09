@@ -18,8 +18,8 @@ enum class ListDisplay {
 
     fun switchListDiplay(): ListDisplay {
         return when (this) {
-            this -> GRID
-            else -> VERTICAL
+            VERTICAL -> GRID
+            GRID -> VERTICAL
         }
     }
 }
