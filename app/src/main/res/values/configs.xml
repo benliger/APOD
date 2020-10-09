@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <integer name="gridImageCount">2</integer>
+
     <integer name="memoryCacheSizeMBytes">50</integer>
     <integer name="bitmapPoolSizeMBytes">50</integer>
     <integer name="diskCacheSizeMBytes">150</integer>

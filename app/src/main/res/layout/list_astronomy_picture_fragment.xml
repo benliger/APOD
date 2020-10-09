@@ -12,8 +12,10 @@
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:menu="@menu/list_picture_menu"
             app:title="@string/title_listAstronomyPicture" />
 
     </com.google.android.material.appbar.AppBarLayout>

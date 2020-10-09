@@ -7,6 +7,7 @@ import com.benliger.nasaapod.service.manager.ApodManager
 import com.benliger.nasaapod.ui.common.ScreenUiData
 import com.benliger.nasaapod.ui.common.State
 import com.benliger.nasaapod.ui.list.data.ListAstronomyPictureUiData
+import com.benliger.nasaapod.ui.list.data.ListDisplay
 import com.benliger.nasaapod.ui.list.data.LoadingItem
 import com.benliger.nasaapod.ui.list.data.mapper.ListAstronomyPictureUiDataMapper
 import io.reactivex.disposables.CompositeDisposable
@@ -23,7 +24,7 @@ class ListAstronomyPictureViewModel(
         BehaviorProcessor.createDefault(
             ScreenUiData(
                 state = State.LOADING,
-                data = ListAstronomyPictureUiData(listOf(LoadingItem))
+                data = ListAstronomyPictureUiData(ListDisplay.VERTICAL, listOf(LoadingItem))
             )
         )
     }
@@ -39,26 +40,35 @@ class ListAstronomyPictureViewModel(
         uiDataSource.value?.let { screenUiData ->
             uiDataSource.onNext(
                 screenUiData.copy(
-                    state = State.LOADING, data = ListAstronomyPictureUiData(
-                        listOf(LoadingItem)
+                    state = State.LOADING, data = screenUiData.data.copy(
+                        uiRecyclerItem = listOf(LoadingItem)
                     )
                 )
             )
-            compositeDisposable.add(
-                apodManager.getLastApodList(NUMBER_APOD_TO_DISPLAY)
-                    .subscribeOn(Schedulers.io())
-                    .map {
-                        mapper.mapToUiData(it)
-                    }
-                    .subscribe(
-                        { data ->
-                            uiDataSource.onNext(screenUiData.copy(state = State.IDLE, data = data))
-                        },
-                        { error ->
-                            Timber.e(
-                                error,
-                                "Error while getting the last $NUMBER_APOD_TO_DISPLAY APODs"
+        }
+        compositeDisposable.add(
+            apodManager.getLastApodList(NUMBER_APOD_TO_DISPLAY)
+                .subscribeOn(Schedulers.io())
+                .map {
+                    mapper.mapToUiData(it)
+                }
+                .subscribe(
+                    { data ->
+                        uiDataSource.value?.let { screenUiData ->
+                            uiDataSource.onNext(
+                                screenUiData.copy(
+                                    state = State.IDLE,
+                                    data = screenUiData.data.copy(uiRecyclerItem = data)
+                                )
                             )
+                        }
+                    },
+                    { error ->
+                        Timber.e(
+                            error,
+                            "Error while getting the last $NUMBER_APOD_TO_DISPLAY APODs"
+                        )
+                        uiDataSource.value?.let { screenUiData ->
                             uiDataSource.onNext(
                                 screenUiData.copy(
                                     state = State.ERROR,
@@ -67,14 +77,20 @@ class ListAstronomyPictureViewModel(
                                 )
                             )
                         }
-                    )
-            )
-        }
+                    }
+                )
+        )
     }
 
     override fun onCleared() {
         compositeDisposable.clear()
         super.onCleared()
+    }
+
+    fun switchListDisplay() {
+        uiDataSource.value?.let {
+            uiDataSource.onNext(it.copy(data = it.data.copy(display = it.data.display.switchListDiplay())))
+        }
     }
 
     companion object {

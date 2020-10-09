@@ -2,11 +2,25 @@ package com.benliger.nasaapod.ui.list.data
 
 import com.benliger.nasaapod.ui.common.RecyclerItem
 
-data class ListAstronomyPictureUiData(val uiRecyclerItem: List<AstronomyPictureRecyclerItem> = emptyList())
+data class ListAstronomyPictureUiData(
+    val display: ListDisplay = ListDisplay.VERTICAL,
+    val uiRecyclerItem: List<AstronomyPictureRecyclerItem> = emptyList(),
+)
 
 sealed class AstronomyPictureRecyclerItem : RecyclerItem {
     enum class ViewType(val type: Int) {
         LOADING_VIEW(0), PICTURE_VIEW(1)
+    }
+}
+
+enum class ListDisplay {
+    VERTICAL, GRID;
+
+    fun switchListDiplay(): ListDisplay {
+        return when (this) {
+            this -> GRID
+            else -> VERTICAL
+        }
     }
 }
 

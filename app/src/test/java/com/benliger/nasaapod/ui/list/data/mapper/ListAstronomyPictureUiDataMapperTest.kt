@@ -19,7 +19,7 @@ class ListAstronomyPictureUiDataMapperTest {
         // WHEN
         val result = mapper.mapToUiData(listApod)
         //THEN
-        result.uiRecyclerItem.isEmpty().shouldBeEqualTo(true)
+        result.isEmpty().shouldBeEqualTo(true)
     }
 
     @Test
@@ -29,7 +29,7 @@ class ListAstronomyPictureUiDataMapperTest {
         // WHEN
         val result = mapper.mapToUiData(listApod)
         //THEN
-        result.uiRecyclerItem.isEmpty().shouldBeEqualTo(true)
+        result.isEmpty().shouldBeEqualTo(true)
     }
 
     @Test
@@ -47,7 +47,7 @@ class ListAstronomyPictureUiDataMapperTest {
         // WHEN
         val result = mapper.mapToUiData(listApod)
         //THEN
-        result.uiRecyclerItem.apply {
+        result.apply {
             isEmpty().shouldBeEqualTo(false)
             size.shouldBeEqualTo(1)
             this[0].apply {

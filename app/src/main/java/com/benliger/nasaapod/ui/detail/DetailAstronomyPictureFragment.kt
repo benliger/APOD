@@ -17,7 +17,7 @@ import kotlin.properties.Delegates
 class DetailAstronomyPictureFragment : Fragment() {
 
     private val args by navArgs<DetailAstronomyPictureFragmentArgs>()
-    private val viewModel: DetailAstronomyPictureViewModel by viewModel() {
+    private val viewModel: DetailAstronomyPictureViewModel by viewModel {
         parametersOf(args.date)
     }
     private var viewHolder by Delegates.notNull<DetailAstronomyPictureViewHolder>()
