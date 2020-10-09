@@ -5,4 +5,5 @@
     <string name="retry">Retry</string>
     <string name="error_fetching_data">Oops 😔 something wrong happened!</string>
     <string name="astronomy_picture_cd">astronomy picture</string>
+    <string name="view_picture_button">View picture HD</string>
 </resources>

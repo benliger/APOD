@@ -51,16 +51,26 @@
                 android:contentDescription="@string/astronomy_picture_cd"
                 app:layout_constraintEnd_toEndOf="parent" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/view_picture_button"
+                app:icon="@drawable/ic_outline_photo"
+                android:layout_marginTop="@dimen/margin_default"
+                app:layout_constraintTop_toBottomOf="@id/picture"
+                app:layout_constraintEnd_toEndOf="@id/picture" />
+
             <TextView
                 android:id="@+id/description"
                 style="?textAppearanceBody2"
                 android:layout_width="0dp"
-                android:layout_marginTop="@dimen/margin_medium"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_default"
+                tools:text="@tools:sample/lorem/random"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:text="@tools:sample/lorem/random"
-                app:layout_constraintTop_toBottomOf="@id/picture" />
+                app:layout_constraintTop_toBottomOf="@id/button" />
 
             <TextView
                 android:id="@+id/copyright"

@@ -42,7 +42,7 @@ class DetailAstronomyPictureViewHolder(
                 binding.description.text = screenUiData.data.explanation
                 binding.copyright.text = screenUiData.data.copyright
                 binding.picture.loadImage(screenUiData.data.url, R.drawable.ic_twotone_scatter_plot)
-                binding.picture.setOnClickListener {
+                binding.button.setOnClickListener {
                     val pictureUrlHd = if (!screenUiData.data.hdUrl.isBlank()) {
                         screenUiData.data.hdUrl
                     } else {
