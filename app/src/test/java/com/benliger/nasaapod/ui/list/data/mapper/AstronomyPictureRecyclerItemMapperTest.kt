@@ -7,9 +7,9 @@ import org.amshove.kluent.shouldBeInstanceOf
 import org.junit.Test
 
 
-class ListAstronomyPictureUiDataMapperTest {
+class AstronomyPictureRecyclerItemMapperTest {
 
-    private val mapper = ListAstronomyPictureUiDataMapper()
+    private val mapper = AstronomyPictureRecyclerItemMapper()
 
 
     @Test
@@ -38,7 +38,7 @@ class ListAstronomyPictureUiDataMapperTest {
         val listApod =
             listOf(
                 Apod(
-                    mediaType = ListAstronomyPictureUiDataMapper.APOD_IMAGE_MEDIA_TYPE,
+                    mediaType = AstronomyPictureRecyclerItemMapper.APOD_IMAGE_MEDIA_TYPE,
                     date = "2020-10-08",
                     title = "title",
                     url = "https://some.website.com"

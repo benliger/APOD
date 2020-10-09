@@ -9,7 +9,7 @@ import com.benliger.nasaapod.ui.common.State
 import com.benliger.nasaapod.ui.list.data.ListAstronomyPictureUiData
 import com.benliger.nasaapod.ui.list.data.ListDisplay
 import com.benliger.nasaapod.ui.list.data.LoadingItem
-import com.benliger.nasaapod.ui.list.data.mapper.ListAstronomyPictureUiDataMapper
+import com.benliger.nasaapod.ui.list.data.mapper.AstronomyPictureRecyclerItemMapper
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.processors.BehaviorProcessor
 import io.reactivex.schedulers.Schedulers
@@ -29,7 +29,7 @@ class ListAstronomyPictureViewModel(
         )
     }
 
-    private val mapper: ListAstronomyPictureUiDataMapper by lazy { ListAstronomyPictureUiDataMapper() }
+    private val mapper: AstronomyPictureRecyclerItemMapper by lazy { AstronomyPictureRecyclerItemMapper() }
     private val compositeDisposable: CompositeDisposable by lazy { CompositeDisposable() }
 
     init {

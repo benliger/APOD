@@ -5,7 +5,7 @@ import com.benliger.nasaapod.ui.list.data.AstronomyPictureRecyclerItem
 import com.benliger.nasaapod.ui.list.data.PictureItem
 import org.joda.time.LocalDate
 
-class ListAstronomyPictureUiDataMapper {
+class AstronomyPictureRecyclerItemMapper {
 
     fun mapToUiData(listApod: List<Apod>): List<AstronomyPictureRecyclerItem> {
         val pictureListApod = listApod.filter { it.mediaType == APOD_IMAGE_MEDIA_TYPE }
